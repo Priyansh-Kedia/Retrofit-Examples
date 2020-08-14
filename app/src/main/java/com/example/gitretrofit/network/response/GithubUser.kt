@@ -5,6 +5,6 @@ import com.google.gson.annotations.SerializedName
 data class GithubUser(
 
     @SerializedName("avatar_url")
-    val profile_dp: String
+    val profile_dp: String?
 
 )
