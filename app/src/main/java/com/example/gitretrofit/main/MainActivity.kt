@@ -1,19 +1,11 @@
 package com.example.gitretrofit.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
-import com.example.gitretrofit.base.BaseActivity
 import com.example.gitretrofit.R
-import com.example.gitretrofit.network.ApiClient
-import com.example.gitretrofit.network.response.GithubUser
-import com.example.gitretrofit.util.NetworkResult
-import com.example.gitretrofit.util.safeApiCall
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import javax.inject.Inject
+import com.example.gitretrofit.base.BaseActivity
+import com.example.gitretrofit.util.log
 
 class MainActivity : BaseActivity() {
 
@@ -31,13 +23,13 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setObserver() {
-        viewModel.userLiveData.observe(this) {
-            Log.d("TAG!",it.toString())
+        viewModel.userLiveData.observe(this) { user ->
+            log("Github user: $user")
         }
     }
 
     private fun makeApiCalls() {
-        viewModel.getCountryWiseCases("Priyansh-Kedia")
+        viewModel.getHithubUserInfo("Priyansh-Kedia")
     }
 
 }

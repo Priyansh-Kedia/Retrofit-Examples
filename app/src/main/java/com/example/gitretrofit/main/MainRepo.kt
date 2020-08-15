@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class MainRepo @Inject constructor(private val apiClient: ApiClient) {
 
-    suspend fun getCountryWiseCases(user: String): NetworkResult<GithubUser> {
+    suspend fun getGithubUserInfo(user: String): NetworkResult<GithubUser> {
         var networkResult: NetworkResult<GithubUser>? = null
 
         safeApiCall({
